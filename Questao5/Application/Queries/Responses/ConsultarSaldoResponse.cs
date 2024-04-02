@@ -2,6 +2,6 @@
 {
     public class ConsultarSaldoResponse
     {
-        public decimal Saldo { get; set; } // Saldo atual da conta corrente
+        public decimal Saldo { get; set; } 
     }
 }

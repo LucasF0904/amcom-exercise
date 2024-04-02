@@ -15,17 +15,18 @@ namespace Questao5.Infrastructure.Services.Controllers
         {
             _mediator = mediator;
         }
+
         [HttpPost]
-        public async Task<ActionResult<CriarMovimentacaoResponse>> CriarMovimentacao([FromBody] CriarMovimentacaoCommand command)
+        public async Task<IActionResult> CriarMovimentacao([FromBody] CriarMovimentacaoCommand command)
         {
             try
             {
                 var response = await _mediator.Send(command);
                 return Ok(response);
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { Error = ex.Message });
             }
         }
     }
