@@ -1,10 +1,16 @@
 ﻿namespace Questao5.Domain.Language
 {
-    public static class Messages
+    public enum Messages
     {
-        public static string ContaInexistente = "A conta corrente especificada não existe.";
-        public static string ContaInativa = "A conta corrente especificada está inativa.";
-        public static string ValorInvalido = "O valor especificado é inválido.";
-        public static string TipoMovimentacaoInvalido = "O tipo de movimentação especificado é inválido.";
+        INVALID_ACCOUNT,
+        INACTIVE_ACCOUNT,
+        INSUFFICIENT_BALANCE,
+        INVALID_MOVEMENT_TYPE,
+        INVALID_AMOUNT,
+        INVALID_REQUEST_ID,
+        INVALID_ACCOUNT_ID,
+        INVALID_ACCOUNT_NUMBER,
+        INVALID_ACCOUNT_NAME,
+        INVALID_ACCOUNT_ACTIVE
     }
 }

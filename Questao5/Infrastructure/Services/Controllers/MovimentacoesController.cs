@@ -1,7 +1,7 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Questao5.Application.Commands.Requests;
 using Questao5.Application.Commands.Responses;
+using Questao5.Application.Handlers; // Assumindo que seu manipulador está aqui
 
 namespace Questao5.Infrastructure.Services.Controllers
 {
@@ -9,25 +9,24 @@ namespace Questao5.Infrastructure.Services.Controllers
     [Route("[controller]")]
     public class MovimentacoesController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly CreateMovimentoHandler _createMovimentoHandler;
 
-        public MovimentacoesController(IMediator mediator)
+        public MovimentacoesController(CreateMovimentoHandler createMovimentoHandler)
         {
-            _mediator = mediator;
+            _createMovimentoHandler = createMovimentoHandler;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarMovimentacao([FromBody] CriarMovimentacaoCommand command)
+        public async Task<IActionResult> CreateMovimento([FromBody] CreateMovimentoRequest request)
         {
-            try
+            var response = await _createMovimentoHandler.Handle(request);
+
+            if (!response.Success)
             {
-                var response = await _mediator.Send(command);
-                return Ok(response);
+                return BadRequest(response.Message);
             }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new { Error = ex.Message });
-            }
+
+            return Ok(response.MovimentoId);
         }
     }
 }

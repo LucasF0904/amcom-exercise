@@ -1,11 +1,12 @@
 ﻿using Questao5.Domain.Enumerators;
 namespace Questao5.Domain.Entities
 {
-    public class Movimentacao
+    public class Movimento
     {
-        public int Id { get; set; }
-        public int ContaCorrenteId { get; set; }
+        public int IdMovimento { get; set; }
+        public string IdContaCorrente { get; set; }
+        public string DataMovimento { get; set; }
+        public TipoMovimentacao TipoMovimento { get; set; }
         public decimal Valor { get; set; }
-        public TipoMovimentacao TipoMovimentacao { get; set; }
     }
 }

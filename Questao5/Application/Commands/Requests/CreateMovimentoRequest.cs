@@ -4,10 +4,10 @@ using Questao5.Domain.Enumerators;
 
 namespace Questao5.Application.Commands.Requests
 {
-    public class CriarMovimentacaoCommand : IRequest<CriarMovimentacaoResponse>
+    public class CreateMovimentoRequest : IRequest<CreateMovimentoResponse>
     {
-        public string IdentificacaoRequisicao { get; set; }
-        public int ContaCorrenteId { get; set; }
+        public Guid RequestId { get; set; } 
+        public string ContaCorrenteId { get; set; }
         public decimal Valor { get; set; }
         public TipoMovimentacao TipoMovimentacao { get; set; }
     }

@@ -1,8 +1,20 @@
-﻿namespace Questao5.Domain.Enumerators
+﻿using System;
+
+namespace Questao5.Domain.Enumerators
 {
+    public class EnumCharValueAttribute : Attribute
+    {
+        public char CharValue { get; private set; }
+
+        public EnumCharValueAttribute(char value)
+        {
+            CharValue = value;
+        }
+    }
+
     public enum TipoMovimentacao
     {
-        Credito = 1,
-        Debito = 2
+        [EnumCharValue('C')] Credito,
+        [EnumCharValue('D')] Debito
     }
 }

@@ -20,6 +20,7 @@ namespace Questao5.Infrastructure.Sqlite
             var tableName = table.FirstOrDefault();
             if (!string.IsNullOrEmpty(tableName) && (tableName == "contacorrente" || tableName == "movimento" || tableName == "idempotencia"))
                 return;
+            connection.Execute("PRAGMA journal_mode=WAL;");
 
             connection.Execute("CREATE TABLE contacorrente ( " +
                                "idcontacorrente TEXT(37) PRIMARY KEY," +
