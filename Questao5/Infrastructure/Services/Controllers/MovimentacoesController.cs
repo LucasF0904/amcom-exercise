@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Questao5.Application.Commands.Requests;
 using Questao5.Application.Commands.Responses;
-using Questao5.Application.Handlers; // Assumindo que seu manipulador está aqui
+using Questao5.Application.Handlers;
 
 namespace Questao5.Infrastructure.Services.Controllers
 {

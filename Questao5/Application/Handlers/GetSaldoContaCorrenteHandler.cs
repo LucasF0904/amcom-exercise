@@ -21,7 +21,6 @@ namespace Questao5.Application.Handlers
             _movimentoQueryStore = movimentoQueryStore;
         }
 
-        // Note que o CancellationToken ainda está na assinatura do método, mas você não precisa usá-lo
         public async Task<GetSaldoContaCorrenteResponse> Handle(GetSaldoContaCorrenteRequest request, CancellationToken cancellationToken)
         {
             var contaCorrente = _contaCorrenteQueryStore.FindById(request.IdContaCorrente);

@@ -31,7 +31,6 @@ namespace Questao5.Tests.Handlers
         [Fact]
         public async Task Handle_ValidRequest_ReturnsExpectedSaldo()
         {
-            // Arrange
             var handler = CreateGetSaldoContaCorrenteHandler();
             string contaCorrenteId = "FA99D033-7067-ED11-96C6-7C5DFA4A16C9"; 
             var request = new GetSaldoContaCorrenteRequest { IdContaCorrente = contaCorrenteId };
@@ -45,10 +44,8 @@ namespace Questao5.Tests.Handlers
             _mockMovimentoQueryStore.SumMovimentosByTipo(contaCorrenteId, TipoMovimentacao.Debito)
                 .Returns(50m); 
 
-            // Act
             var result = await handler.Handle(request, default);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(expectedSaldo, result.Saldo);
             Assert.True(result.Success);

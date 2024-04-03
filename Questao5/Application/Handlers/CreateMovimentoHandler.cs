@@ -26,15 +26,13 @@ namespace Questao5.Application.Handlers
 
         public async Task<CreateMovimentoResponse> Handle(CreateMovimentoRequest request)
         {
-            // Verificação de idempotência
             var idempotencia = _idempotenciaQueryStore.FindById(request.RequestId);
             if (idempotencia != null)
             {
-                // Movimento já processado anteriormente
                 return new CreateMovimentoResponse
                 {
                     Success = true,
-                    MovimentoId = new Guid(idempotencia.Resultado).ToString() // assumindo que o resultado guarda o ID do movimento
+                    MovimentoId = new Guid(idempotencia.Resultado).ToString()
                 };
             }
 
@@ -71,7 +69,6 @@ namespace Questao5.Application.Handlers
 
 
 
-            // Persistindo o movimento
             var movimentoId = _movimentoCommandStore.CreateMovimento(new Movimento
             {
                 IdContaCorrente = request.ContaCorrenteId,

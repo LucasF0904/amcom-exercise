@@ -36,7 +36,6 @@ namespace Questao5.Tests.Handlers
         [Fact]
         public async Task HandleMovimento()
         {
-            // Arrange
             var requestId = Guid.NewGuid();
             string contaCorrenteId = "FA99D033-7067-ED11-96C6-7C5DFA4A16C9"; 
             var valor = 100.00M; 
